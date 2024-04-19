@@ -1,4 +1,4 @@
-https://github.com/hongjinkim/TIL/blob/main/cover.png
+![cover](https://github.com/hongjinkim/TIL/blob/main/cover.png)
 # TIL
 ## 2024.04.15 내일배움캠프 첫날
     오늘은 스파르타내일배움캠프의 첫날입니다.
