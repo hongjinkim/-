@@ -73,7 +73,113 @@
     - 와이어 프레임을 좀 더 구체적으로 작성하기
 
     이번 경험을 바탕으로 다음에는 더 좋은 결과를 만들 수 있을 것 같습니다.
+## 2024.04.22
+    내일배움캠프의 2주차는 기초 프로그래밍 교육 주차 입니다. Unity 게임 개발을 진행하기 전 기초적인 c# 공부를 통해 기초를 다지는 기간입니다.
 
+    C# 문법 종합반 1주차 강의를 수강하고, 배운내용을 바탕으로 과제 풀이를 하였습니다.
+
+### 1-1 사용자로부터 입력 받기
+
+이름과 나이를 입력 받고 출력하는 코드를 작성하세요.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/87dea54c-4143-4c35-9f90-2be02b020229/Untitled.png)
+
+    using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            Console.Write("이름을 입력하세요: ");
+            string userName = Console.ReadLine();
+
+            Console.Write("나이를 입력하세요: ");
+            string userAge = Console.ReadLine();
+
+            Console.WriteLine("안녕하세요, " + userName + "! 당신은 " + userAge + " 세 이군요.");
+        }
+    }
+
+### 1-2 간단한 사칙연산 계산기 만들기
+
+두 수를 입력 받고 사칙연산의 결과를 출력하세요.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f3d35730-46a4-4ce9-8484-a31562ff8178/Untitled.png)
+
+    using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            Console.Write("첫번째 수를 입력하세요: ");
+            int num1 = int.Parse(Console.ReadLine());
+
+            Console.Write("두번째 수를 입력하세요: ");
+            int num2 = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("더하기: " + (num1 + num2));
+            Console.WriteLine("빼기: " + (num1 - num2));
+            Console.WriteLine("곱하기: " + (num1 * num2));
+            Console.WriteLine("나누기: " + ((float)num1 / num2));
+        }
+    }
+
+### 1-3 **온도 변환기 만들기**
+
+사용자로부터 섭씨온도를 입력받아, 화씨온도로 변환하는 프로그램을 만들어봅시다. 
+
+공식은 **`화씨 = (섭씨 * 9/5) + 32`** 입니다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/81cc0630-c382-4cbc-a1a9-73b2b0c5ae9d/Untitled.png)
+
+    using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            Console.Write("섭씨 온도를 입력하세요: ");
+            float celsius = float.Parse(Console.ReadLine());
+
+            float fahrenheit = (celsius * 9 / 5) + 32;
+            Console.WriteLine("변환된 화씨 온도: " + fahrenheit);
+        }
+    }
+
+### 1-4 BMI 계산기 만들기
+
+사용자로부터 키(m)와 체중(kg)를 입력받아, BMI 지수를 계산하는 프로그램을 만들어봅시다. 공식은 **`BMI = 체중(kg) / 키(m)^2`** 입니다.
+
+    using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            Console.Write("체중(kg)를 입력하세요: ");
+            float weight = float.Parse(Console.ReadLine());
+
+            Console.Write("키(m)를 입력하세요: ");
+            float height = float.Parse(Console.ReadLine());
+
+            float bmi = weight / (height * height);
+            Console.WriteLine("당신의 BMI: " + bmi);
+        }
+    }
+
+개인과제의 class 구조를 작성하였습니다.
+<details>
+<summary>오늘 커밋한 코드</summary>
+<div markdown="1">
+
+[프로그래밍 기초 개인과제 스파르타 던전 만들기](https://github.com/hongjinkim/TIL/commit/4c136932620d24cab35e7df97a063c393b3b4029)
+
+</div>
+</details>
+
+*개인 과제
+* [스파르타 던전](https://github.com/hongjinkim/TIL/tree/4c136932620d24cab35e7df97a063c393b3b4029/%EA%B0%9C%EC%9D%B8%EA%B3%BC%EC%A0%9C/SpartaDungeon_By_%EA%B9%80%ED%99%8D%EC%A7%84)
 
 
 

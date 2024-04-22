@@ -1,9 +1,12 @@
 ﻿
+using System.Runtime.InteropServices;
+
 namespace SpartaDungeon_By_김홍진
 {
     internal class GameManager
     {
         //구조체, 열거형
+        SaveManager saveManager = new SaveManager();
         public struct Option
         {
             public uint optionNum;
@@ -13,6 +16,12 @@ namespace SpartaDungeon_By_김홍진
         {
             Weapon,
             Armor
+        }
+
+        public struct Equipment
+        {
+            public Item armor;
+            public Item weapon;
         }
         // Screen Class
         public class Screen()
@@ -43,33 +52,25 @@ namespace SpartaDungeon_By_김홍진
             public uint playerSTR;
             public uint playerDEF;
             public uint playerHP;
-            public uint playerGold;  
+            public uint playerGold;
+
+            public Equipment playerEquipment;
         }
         public static Player playerInfo;
         public class Item
         {
-            bool isEquipped;
-            string itemName;
-            ItemType itemType;
-            uint itemValue;
-            string itemInfo;
-            bool isOnSale;
-            public Item InitItem(string name, ItemType type, uint value, string info)
-            {
-                Item item = new Item();
-                item.isEquipped = false;
-                item.itemName = name;
-                item.itemType = type;
-                item.itemValue = value;
-                item.itemInfo = info;
-                item.isOnSale = true;
-
-                return item;
-            }
+            public bool isEquipped;
+            public string itemName;
+            public ItemType itemType;
+            public uint itemValue;
+            public string itemInfo;
+            public bool isOnSale;
+            
         }
+        public static List<Item> Inventory;
 
         //메인함수
-        static void Main(string[] args)
+        static void Main()
         {
             Init();
             OnStartScreen();
@@ -78,90 +79,15 @@ namespace SpartaDungeon_By_김홍진
         static void Init()
         {
             playerInfo = InitPlayer("홍진");
-            startScreen = InitScreen("게임 시작 화면",
-                                                    "스파르타 마을에 오신 여러분 환영합니다.\n이곳에서 던전으로 들어가기전 활동을 할 수 있습니다.\n",
-                                                    new List<Option>
-                                                            {
-                                                                new Option { optionNum = 1, optionText = "상태 보기"},
-                                                                new Option { optionNum = 2, optionText = "인벤토리"},
-                                                                new Option { optionNum = 3, optionText = "상점"},
-                                                                new Option { optionNum = 4, optionText = "던전입장"},
-                                                                new Option { optionNum = 5, optionText = "휴식하기"}
-                                                            }
-                                                    );
-            statusScreen = InitScreen("상태 보기",
-                                                    "캐릭터의 정보가 표시됩니다.\n",
-                                                    new List<Option>
-                                                            {
-                                                                new Option { optionNum = 0, optionText = "나가기"},
-                                                            }
-                                                    );
-            inventoryScreen = InitScreen("인벤토리",
-                                                    "보유 중인 아이템을 관리할 수 있습니다.\n\n[아이템 목록]\n",
-                                                    new List<Option>
-                                                            {
-                                                                new Option { optionNum = 1, optionText = "장착 관리"},
-                                                                new Option { optionNum = 0, optionText = "나가기"}
-                                                            }
-                                                    );
-            inventory_equipScreen = InitScreen("인벤토리 - 장착 관리",
-                                                    "보유 중인 아이템을 관리할 수 있습니다.\n\n[아이템 목록]\n",
-                                                    new List<Option>
-                                                            {
-                                                                new Option { optionNum = 0, optionText = "나가기"}
-                                                            }
-                                                    );
-            shopScreen = InitScreen("상점",
-                                                    "필요한 아이템을 얻을 수 있는 상점입니다.\n\n[아이템 목록]\n",
-                                                    new List<Option>
-                                                            {
-                                                                new Option { optionNum = 1, optionText = "아이템 구매"},
-                                                                new Option { optionNum = 2, optionText = "아이템 판매"},
-                                                                new Option { optionNum = 0, optionText = "나가기"}
-                                                            }
-                                                    );
-            shop_buyScreen = InitScreen("상점 - 아이템 구매",
-                                                   "필요한 아이템을 얻을 수 있는 상점입니다.\n\n[아이템 목록]\n",
-                                                   new List<Option>
-                                                           {
-                                                                new Option { optionNum = 0, optionText = "나가기"}
-                                                           }
-                                                   );
-            shop_sellScreen = InitScreen("상점 - 아이템 판매",
-                                                    "스파르타 마을에 오신 여러분 환영합니다.\n이곳에서 던전으로 들어가기전 활동을 할 수 있습니다.\n",
-                                                    new List<Option>
-                                                            {
-                                                                new Option { optionNum = 0, optionText = "나가기"}
-                                                            }
-                                                    );
-            //dungeonScreen = InitScreen("던전입장",
-            //                                        "이곳에서 던전으로 들어가기 전 활동을 할 수 있습니다.\n",
-            //                                        new List<Option>
-            //                                                {
-            //                                                    new Option { optionNum = 1, optionText = "쉬운 던전"},
-            //                                                    new Option { optionNum = 2, optionText = "일반 던전"},
-            //                                                    new Option { optionNum = 3, optionText = "어려운 던전"},
-            //                                                    new Option { optionNum = 0, optionText = "나가기"}
-            //                                                }
-            //                                        );
-            //dungeon_clearScreen = InitScreen("던전 클리어\n",
-            //                                        "축하합니다!!\n쉬운 던전을 클리어 하였습니다.\n",
-            //                                        new List<Option>
-            //                                                {
-            //                                                    new Option { optionNum = 1, optionText = "쉬운 던전"},
-            //                                                    new Option { optionNum = 2, optionText = "일반 던전"},
-            //                                                    new Option { optionNum = 3, optionText = "어려운 던전"},
-            //                                                    new Option { optionNum = 0, optionText = "나가기"}
-            //                                                }
-            //                                        );
-            //restScreen = InitScreen("휴식하기",
-            //                                        "500 G 를 내면 체력을 회복할 수 있습니다.",
-            //                                        new List<Option>
-            //                                                {
-            //                                                    new Option { optionNum = 1, optionText = "휴식하기"},
-            //                                                    new Option { optionNum = 0, optionText = "나가기"}
-            //                                                }
-            //                                        );
+            Inventory = new List<Item>
+                            {
+                                InitItem("무쇠갑옷", ItemType.Armor, 5, "무쇠로 만들어져 튼튼한 갑옷입니다."),
+                                InitItem("스파르타의 창", ItemType.Weapon, 7, "슾파르타의 전사들이 사용했다는 전설의 창입니다."),
+                                InitItem("낡은 검", ItemType.Weapon, 2, "쉽게 볼 수 있는 낡은 검 입니다.")
+                            };
+            InitEquipped();
+            UpdateStatus();
+            InitScreens();
         }
         //각 화면 정보 초기화
         public static Screen InitScreen(string title, string bio, List<Option> options)
@@ -184,6 +110,18 @@ namespace SpartaDungeon_By_김홍진
             player.playerGold = 1500;
 
             return player;
+        }
+        public static Item InitItem(string name, ItemType type, uint value, string info)
+        {
+            Item item = new Item();
+            item.isEquipped = false;
+            item.itemName = name;
+            item.itemType = type;
+            item.itemValue = value;
+            item.itemInfo = info;
+            item.isOnSale = true;
+
+            return item;
         }
         public static void OnStartScreen()
         {
@@ -246,9 +184,37 @@ namespace SpartaDungeon_By_김홍진
         static void OnInventoryScreen()
          {
             bool isValid = true;
+            string content = "";
+
+            string tempEquipped;
+            string tempType;
+            string tempRow;
+            int tempIndex = 1;
+
+            foreach(Item item in Inventory)
+            {
+                if(item.itemType == ItemType.Armor)
+                {
+                    tempType = "방어력";
+                }
+                else
+                {
+                    tempType = "공격력";
+                }
+                if (item.isEquipped)
+                {
+                    tempEquipped = "[E]";
+                }
+                else
+                {
+                    tempEquipped = "";
+                }
+                content +="- " + tempIndex + " " + tempEquipped + item.itemName + " \t | " + tempType + " +" + item.itemValue + " | " + item.itemInfo + "\n";
+                tempIndex++;
+            }
             while (isValid)
             {
-                switch (ScreenOutput(inventoryScreen, null))
+                switch (ScreenOutput(inventoryScreen, content))
                 {
                     case 1:
                         isValid = false;
@@ -352,6 +318,136 @@ namespace SpartaDungeon_By_김홍진
         //    {
 
         //    }
+        static void InitScreens()
+        {
+            startScreen = InitScreen("게임 시작 화면",
+                                                    "스파르타 마을에 오신 여러분 환영합니다.\n이곳에서 던전으로 들어가기전 활동을 할 수 있습니다.\n",
+                                                    new List<Option>
+                                                            {
+                                                                new Option { optionNum = 1, optionText = "상태 보기"},
+                                                                new Option { optionNum = 2, optionText = "인벤토리"},
+                                                                new Option { optionNum = 3, optionText = "상점"},
+                                                                new Option { optionNum = 4, optionText = "던전입장"},
+                                                                new Option { optionNum = 5, optionText = "휴식하기"}
+                                                            }
+                                                    );
+            statusScreen = InitScreen("상태 보기",
+                                                    "캐릭터의 정보가 표시됩니다.\n",
+                                                    new List<Option>
+                                                            {
+                                                                new Option { optionNum = 0, optionText = "나가기"},
+                                                            }
+                                                    );
+            inventoryScreen = InitScreen("인벤토리",
+                                                    "보유 중인 아이템을 관리할 수 있습니다.\n\n[아이템 목록]\n",
+                                                    new List<Option>
+                                                            {
+                                                                new Option { optionNum = 1, optionText = "장착 관리"},
+                                                                new Option { optionNum = 0, optionText = "나가기"}
+                                                            }
+                                                    );
+            inventory_equipScreen = InitScreen("인벤토리 - 장착 관리",
+                                                    "보유 중인 아이템을 관리할 수 있습니다.\n\n[아이템 목록]\n",
+                                                    new List<Option>
+                                                            {
+                                                                new Option { optionNum = 0, optionText = "나가기"}
+                                                            }
+                                                    );
+            shopScreen = InitScreen("상점",
+                                                    "필요한 아이템을 얻을 수 있는 상점입니다.\n\n[아이템 목록]\n",
+                                                    new List<Option>
+                                                            {
+                                                                new Option { optionNum = 1, optionText = "아이템 구매"},
+                                                                new Option { optionNum = 2, optionText = "아이템 판매"},
+                                                                new Option { optionNum = 0, optionText = "나가기"}
+                                                            }
+                                                    );
+            shop_buyScreen = InitScreen("상점 - 아이템 구매",
+                                                   "필요한 아이템을 얻을 수 있는 상점입니다.\n\n[아이템 목록]\n",
+                                                   new List<Option>
+                                                           {
+                                                                new Option { optionNum = 0, optionText = "나가기"}
+                                                           }
+                                                   );
+            shop_sellScreen = InitScreen("상점 - 아이템 판매",
+                                                    "스파르타 마을에 오신 여러분 환영합니다.\n이곳에서 던전으로 들어가기전 활동을 할 수 있습니다.\n",
+                                                    new List<Option>
+                                                            {
+                                                                new Option { optionNum = 0, optionText = "나가기"}
+                                                            }
+                                                    );
+            //dungeonScreen = InitScreen("던전입장",
+            //                                        "이곳에서 던전으로 들어가기 전 활동을 할 수 있습니다.\n",
+            //                                        new List<Option>
+            //                                                {
+            //                                                    new Option { optionNum = 1, optionText = "쉬운 던전"},
+            //                                                    new Option { optionNum = 2, optionText = "일반 던전"},
+            //                                                    new Option { optionNum = 3, optionText = "어려운 던전"},
+            //                                                    new Option { optionNum = 0, optionText = "나가기"}
+            //                                                }
+            //                                        );
+            //dungeon_clearScreen = InitScreen("던전 클리어\n",
+            //                                        "축하합니다!!\n쉬운 던전을 클리어 하였습니다.\n",
+            //                                        new List<Option>
+            //                                                {
+            //                                                    new Option { optionNum = 1, optionText = "쉬운 던전"},
+            //                                                    new Option { optionNum = 2, optionText = "일반 던전"},
+            //                                                    new Option { optionNum = 3, optionText = "어려운 던전"},
+            //                                                    new Option { optionNum = 0, optionText = "나가기"}
+            //                                                }
+            //                                        );
+            //restScreen = InitScreen("휴식하기",
+            //                                        "500 G 를 내면 체력을 회복할 수 있습니다.",
+            //                                        new List<Option>
+            //                                                {
+            //                                                    new Option { optionNum = 1, optionText = "휴식하기"},
+            //                                                    new Option { optionNum = 0, optionText = "나가기"}
+            //                                                }
+            //                                        );
+        }
+        static void InitEquipped()
+        {
+            EquipItem(0);
+            EquipItem(1);
+        }
+        static void EquipItem(int idx)
+        {
+            ItemType type = Inventory[idx].itemType;
+            foreach(Item item in Inventory)
+            {
+                if(item.isEquipped && item.itemType == type)
+                {
+                    item.isEquipped = false;
+                }
+            }
+            Inventory[idx].isEquipped = true;
+            if(type == ItemType.Armor)
+            {
+                playerInfo.playerEquipment.armor = Inventory[idx];
+            }
+            else if(type == ItemType.Weapon)
+            {
+                playerInfo.playerEquipment.weapon = Inventory[idx];
+            }
+           
+        }
+        static void UpdateStatus()
+        {
+            foreach (Item item in Inventory)
+            {
+                if (item.isEquipped)
+                {
+                    if(item.itemType == ItemType.Armor)
+                    {
+                        playerInfo.playerDEF += item.itemValue;
+                    }
+                    else if (item.itemType == ItemType.Weapon)
+                    {
+                        playerInfo.playerSTR += item.itemValue;
+                    }
+                }
+            }
+        }
         static int ScreenOutput(Screen screen, string content)
         {
             PrintTitleAndBio(screen);

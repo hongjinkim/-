@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpartaDungeon_By_김홍진")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c136932620d24cab35e7df97a063c393b3b4029")]
 [assembly: System.Reflection.AssemblyProductAttribute("SpartaDungeon_By_김홍진")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpartaDungeon_By_김홍진")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
