@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\ghdwl\\Documents\\GitHub\\TIL\\\uAC1C\uC778\uACFC\uC81C\\SpartaDungeon_By_\uAE40\uD64D\uC9C4\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{389C2AF5-E7B1-4C64-8613-B48B794F3F17}|SpartaDungeon_By_\uAE40\uD64D\uC9C4.csproj|c:\\users\\ghdwl\\documents\\github\\til\\\uAC1C\uC778\uACFC\uC81C\\spartadungeon_by_\uAE40\uD64D\uC9C4\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{389C2AF5-E7B1-4C64-8613-B48B794F3F17}|SpartaDungeon_By_\uAE40\uD64D\uC9C4.csproj|solutionrelative:gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{389C2AF5-E7B1-4C64-8613-B48B794F3F17}|SpartaDungeon_By_\uAE40\uD64D\uC9C4.csproj|c:\\users\\ghdwl\\documents\\github\\til\\\uAC1C\uC778\uACFC\uC81C\\spartadungeon_by_\uAE40\uD64D\uC9C4\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{389C2AF5-E7B1-4C64-8613-B48B794F3F17}|SpartaDungeon_By_\uAE40\uD64D\uC9C4.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{389C2AF5-E7B1-4C64-8613-B48B794F3F17}|SpartaDungeon_By_\uAE40\uD64D\uC9C4.csproj|c:\\users\\ghdwl\\documents\\github\\til\\\uAC1C\uC778\uACFC\uC81C\\spartadungeon_by_\uAE40\uD64D\uC9C4\\savemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -40,12 +40,12 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GameManager.cs",
-              "DocumentMoniker": "C:\\Users\\ghdwl\\Documents\\GitHub\\TIL\\\uAC1C\uC778\uACFC\uC81C\\SpartaDungeon_By_\uAE40\uD64D\uC9C4\\GameManager.cs",
-              "RelativeDocumentMoniker": "GameManager.cs",
-              "ToolTip": "C:\\Users\\ghdwl\\Documents\\GitHub\\TIL\\\uAC1C\uC778\uACFC\uC81C\\SpartaDungeon_By_\uAE40\uD64D\uC9C4\\GameManager.cs",
-              "RelativeToolTip": "GameManager.cs",
-              "ViewState": "AQIAADgAAAAAAAAAAAAYwJ0AAAAJAAAA",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ghdwl\\Documents\\GitHub\\TIL\\\uAC1C\uC778\uACFC\uC81C\\SpartaDungeon_By_\uAE40\uD64D\uC9C4\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\ghdwl\\Documents\\GitHub\\TIL\\\uAC1C\uC778\uACFC\uC81C\\SpartaDungeon_By_\uAE40\uD64D\uC9C4\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAIMAAAAAAAAAAAAcwJkAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-21T23:42:17.152Z",
               "EditorCaption": ""
