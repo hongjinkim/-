@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ryWsPR11Ius58uTtmzmGyYNeZm4ZOJt0NnvDvSSMe/6IOx+HH9/0ulm/ZZeXnqqhJOsKdpE9nruYF26KC7sQPw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ghdwl\\Documents\\GitHub\\TIL\\개인과제\\SpartaDungeon\\SpartaDungeon_By_김홍진.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ghdwl\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
